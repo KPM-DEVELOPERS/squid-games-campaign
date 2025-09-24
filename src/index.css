@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Squid Game Color Palette */
+    --background: 0 0% 0%; /* Deep black background */
+    --foreground: 0 0% 100%; /* Pure white text */
+
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Squid Game signature pink */
+    --primary: 324 82% 83%; /* #f9b0f4 */
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 15%; /* Dark gray */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 324 82% 83%; /* Pink accent */
+    --accent-foreground: 0 0% 0%;
+
+    /* Game states */
+    --success: 142 76% 36%; /* Green for wins */
+    --success-foreground: 0 0% 100%;
+    
+    --danger: 0 84% 60%; /* Red for elimination */
+    --danger-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 324 82% 83%;
+    --input: 0 0% 15%;
+    --ring: 324 82% 83%;
+
+    --radius: 0.75rem;
+
+    /* Custom gradients and effects */
+    --gradient-primary: linear-gradient(135deg, hsl(324 82% 83%), hsl(324 82% 70%));
+    --gradient-danger: linear-gradient(135deg, hsl(0 84% 60%), hsl(0 84% 50%));
+    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 30%));
+    --shadow-glow: 0 0 30px hsl(324 82% 83% / 0.4);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Keep same dark theme as root for consistency */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 324 82% 83%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 324 82% 83%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 324 82% 83%;
+    --input: 0 0% 15%;
+    --ring: 324 82% 83%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    overflow-x: hidden;
+  }
+
+  /* Squid Game inspired typography and animations */
+  .squid-title {
+    @apply text-6xl md:text-8xl font-black text-primary;
+    font-family: 'Arial Black', sans-serif;
+    text-shadow: 0 0 20px hsl(324 82% 83% / 0.5);
+    letter-spacing: -0.02em;
+  }
+
+  .game-frame {
+    @apply border-4 border-primary rounded-lg;
+    box-shadow: var(--shadow-glow);
+    transition: var(--transition-smooth);
+  }
+
+  .scaling-product {
+    @apply transition-all duration-200 ease-out;
+    transform-origin: center center;
+  }
+
+  .game-button {
+    @apply relative overflow-hidden rounded-full;
+    background: var(--gradient-primary);
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .game-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px hsl(324 82% 83% / 0.6);
+  }
+
+  .game-button:active {
+    transform: scale(0.95);
+  }
+
+  .win-message {
+    @apply text-2xl font-bold;
+    color: hsl(var(--success));
+    text-shadow: 0 0 10px hsl(142 76% 36% / 0.8);
+  }
+
+  .lose-message {
+    @apply text-2xl font-bold;
+    color: hsl(var(--danger));
+    text-shadow: 0 0 10px hsl(0 84% 60% / 0.8);
+  }
+
+  /* Smooth page transitions */
+  .page-enter {
+    @apply opacity-0 transform scale-95;
+  }
+
+  .page-enter-active {
+    @apply opacity-100 transform scale-100;
+    transition: var(--transition-smooth);
+  }
+
+  .page-exit {
+    @apply opacity-100 transform scale-100;
+  }
+
+  .page-exit-active {
+    @apply opacity-0 transform scale-95;
+    transition: var(--transition-smooth);
+  }
+}
