@@ -205,7 +205,7 @@ const Game = () => {
               triggerStop();
             }}
             disabled={gameState !== 'playing' || !ingotState}
-            className="px-16  text-xl font-bold bg-[rgb(255,195,228)] hover:bg-pink-300 text-black rounded-full border-0 shadow-lg hover:shadow-xl transition-all duration-200"
+            className="px-16  text-xl font-bold bg-[rgb(255,195,228)] hover:bg-pink-300 text-black rounded-full border-0 shadow-lg hover:shadow-xl transition-all duration-200 -mt-20"
           >
             Stop
           </Button>
