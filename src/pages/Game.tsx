@@ -162,7 +162,8 @@ const Game = () => {
 
 
         <p className="absolute bottom-20 text-white text-sm mb-10 z-10">
-          {isWin ? "you're ready for next game" : "you've been eliminated"}
+          {isWin && "you're ready for next game"}
+          {!isWin && attempts <= 0 && "you've been eliminated"}
         </p>
 
         <h1
