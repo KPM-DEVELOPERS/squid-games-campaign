@@ -10,6 +10,15 @@ const Landing = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
+
+  useEffect(() => {
     setIsLoaded(true);
   }, []);
 
@@ -42,20 +51,20 @@ const Landing = () => {
             <div className="flex flex-row items-center justify-center ">
 
               {/* X Button */}
-                <img
-                  src={xButtonSvg}
-                  onClick={handleButtonClick}
-                  alt="X Button"
-                  className="relative left-40 cursor-pointer w-full z-10  duration-300"
-                />
+              <img
+                src={xButtonSvg}
+                onClick={handleButtonClick}
+                alt="X Button"
+                className="relative left-40 cursor-pointer w-full z-10  duration-300"
+              />
 
               {/* O Button (Circle) */}
-                <img
-                  src={oButtonSvg}
-                  onClick={handleButtonClick}
-                  alt="O Button"
-                  className="relative right-40 duration-300 w-full z-20 cursor-pointer"
-                />
+              <img
+                src={oButtonSvg}
+                onClick={handleButtonClick}
+                alt="O Button"
+                className="relative right-40 duration-300 w-full z-20 cursor-pointer"
+              />
 
             </div>
           </div>

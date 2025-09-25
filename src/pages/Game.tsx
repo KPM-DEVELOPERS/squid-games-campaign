@@ -32,6 +32,16 @@ const Game = () => {
   const ingotRef = useRef<HTMLImageElement>(null);
   const stopScalingRef = useRef<() => void>();
 
+
+  useEffect(() => {
+   
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
+
   useEffect(() => {
     stopScalingRef.current = () => {
       if (!ingotState || gameState !== 'playing') return;
