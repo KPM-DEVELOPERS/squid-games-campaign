@@ -48,82 +48,40 @@ const Form = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-
-  //   if (!validateForm()) return;
-
-  //   try {
-  //     setIsLoading(true);
-  //     const response = await axios.post(
-  //       "https://gcc-backend.bulliontradingcenter.com/website/form/contact",
-  //       {
-  //         name: formData.name,
-  //         email: formData.email,
-  //         category_id: 78,
-  //       },
-  //       {
-  //         headers: { "Content-Type": "application/json" },
-  //       }
-  //     );
-
-  //     // console.log("Contact form response:", response.data);
-
-  //     toast.success("Form submitted successfully");
-  //     setIsSubmitted(true);
-
-  //     setTimeout(() => {
-  //       navigate("/");
-  //     }, 3000);
-  //   } catch (error) {
-  //     toast.error("Failed to submit. Please try again.");
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
-
-
-
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
- 
-  if (!validateForm()) return;
- 
-  try {
-    setIsLoading(true);
- 
-    // Build form data (what Odoo expects)
-    const formDataToSend = new FormData();
-    formDataToSend.append("name", formData.name);
-    formDataToSend.append("email", formData.email);
-    formDataToSend.append("category_id", "78");
- 
-    const response = await axios.post(
-      "https://gcc-backend.bulliontradingcenter.com/website/form/contact",
-      formDataToSend,
-      {
-        headers: { "Content-Type": "multipart/form-data" },
-        withCredentials: true, // ✅ needed if you want Odoo session/cookies
-      }
-    );
- 
-    console.log("Contact form response:", response.data);
- 
-    toast.success("Form submitted successfully");
-    setIsSubmitted(true);
- 
-    setTimeout(() => {
-      navigate("/");
-    }, 3000);
-  } catch (error) {
-    console.error("Submit error:", error);
-    toast.error("Failed to submit. Please try again.");
-  } finally {
-    setIsLoading(false);
-  }
-};
+    e.preventDefault();
 
-  // This version always shows success even on error, per requirement
+    if (!validateForm()) return;
+
+    try {
+      setIsLoading(true);
+      const response = await axios.post(
+        "https://gcc-backend.bulliontradingcenter.com/website/form/contact",
+        {
+          name: formData.name,
+          email: formData.email,
+          category_id: 78,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      // console.log("Contact form response:", response.data);
+
+      toast.success("Form submitted successfully");
+      setIsSubmitted(true);
+
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    } catch (error) {
+      toast.error("Failed to submit. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const handleSubmitWithSuccess = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
