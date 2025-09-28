@@ -10,28 +10,32 @@ import Game from "./pages/Game";
 import Form from "./pages/Form";
 import NotFound from "./pages/NotFound";
 import Collection from "./pages/Collection";
+import usePreloadImages from "./hooks/usePreloadImages";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <AudioProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/game" element={<Game />} />
-            <Route path="/form" element={<Form />} />
-            <Route path="/collection" element={<Collection />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </AudioProvider>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  usePreloadImages();
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <AudioProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Landing />} />
+              <Route path="/game" element={<Game />} />
+              <Route path="/form" element={<Form />} />
+              <Route path="/collection" element={<Collection />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </AudioProvider>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;

@@ -12,7 +12,7 @@ interface Ingot {
   scale: number;
 }
 
-const SCALE_SPEED = 0.009;
+const SCALE_SPEED = 0.02;
 
 // Win ranges
 const WIN_RANGE_W = [70, 80];
